@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>LLM Survey</title>
+  <style>
+    body { font-family: Arial; background: #f7f7f7; padding: 20px; }
+    .chat-box { width: 600px; margin: auto; background: white; border-radius: 10px; padding: 20px; }
+    .user { text-align: right; color: blue; margin: 10px; }
+    .llm { text-align: left; color: green; margin: 10px; }
+    .score { font-size: small; color: gray; }
+  </style>
+</head>
+<body>
+  <div class="chat-box">
+    <div class="user">Q: {{ question }}</div>
+    <div class="llm">
+      A: {{ llm_answer }}
+      {% if hallucination_score %}
+        <div class="score">Hallucination Score: {{ hallucination_score }}</div>
+      {% endif %}
+    </div>
+
+    <form method="POST">
+      {% csrf_token %}
+      <label>How much do you trust this response? (1–5)</label><br>
+      <input type="number" name="user_feedback" min="1" max="5"><br><br>
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+</body>
+</html>

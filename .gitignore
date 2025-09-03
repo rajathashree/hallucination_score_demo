@@ -1,0 +1,8 @@
+venv/
+*.venv/
+.Python
+*.log
+db.sqlite3
+.vscode/
+
+
